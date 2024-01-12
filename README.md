@@ -47,7 +47,7 @@ Welcome to the Spotify Clone project! This project aims to replicate the core fe
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/spotify-clone.git`
+1. Clone the repository: `git clone https://github.com/techsmartjsk/spotify-clone.git`
 2. Navigate to the project directory: `cd spotify-clone`
 3. Install dependencies for both frontend and backend: `npm install`
 
