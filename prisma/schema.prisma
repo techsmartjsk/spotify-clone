@@ -12,8 +12,8 @@ datasource db {
 
 model User {
   id       Int     @id @default(autoincrement()) @map("_id")
-  username String
-  email    String
+  username String  
+  email    String  @unique
   password String
   role     UserRole   @default(USER)
   playlists Playlist[]
@@ -44,7 +44,6 @@ model Artist {
 }
 
 enum UserRole {
-  LISTENER
   ARTIST
   USER
 }
