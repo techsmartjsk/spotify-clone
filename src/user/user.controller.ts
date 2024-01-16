@@ -19,9 +19,9 @@ import {
 
 import { UsersService } from './user.service'
 import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard'
-import { Prisma, User } from '@prisma/client'
 import { UserDTO } from './dto/user.dto'
 import { UserEntity } from './entity/user.entity'
+import { UpdateUserDTO } from './dto/update.user.dto'
 
 @Controller('users')
 @ApiTags('users')
@@ -57,7 +57,7 @@ export class UsersController {
   @ApiCreatedResponse({ type: UserEntity })
   async update(
     @Param('id', ParseIntPipe) id: number,
-    @Body() updateUserDto: Prisma.UserUpdateInput,
+    @Body() updateUserDto: UpdateUserDTO,
   ) {
     return new UserEntity(await this.usersService.update(id, updateUserDto))
   }
