@@ -18,9 +18,9 @@ import {
 } from '@nestjs/swagger'
 
 import { UsersService } from './user.service'
-import { User } from './dto/user.dto'
-import { UpdateUserDto } from './dto/update.user.dto'
 import { JwtAuthGuard } from 'src/auth/guard/jwt-auth.guard'
+import { Prisma, User } from '@prisma/client'
+import { UserDTO } from './dto/user.dto'
 import { UserEntity } from './entity/user.entity'
 
 @Controller('users')
@@ -30,8 +30,8 @@ export class UsersController {
 
   @Post()
   @ApiCreatedResponse({ type: UserEntity })
-  async create(@Body() UserDto: User) {
-    return new UserEntity(await this.usersService.create(UserDto))
+  async create(@Body() userDTO: UserDTO) {
+    return new UserEntity(await this.usersService.create(userDTO))
   }
 
   @Get()
@@ -57,7 +57,7 @@ export class UsersController {
   @ApiCreatedResponse({ type: UserEntity })
   async update(
     @Param('id', ParseIntPipe) id: number,
-    @Body() updateUserDto: UpdateUserDto,
+    @Body() updateUserDto: Prisma.UserUpdateInput,
   ) {
     return new UserEntity(await this.usersService.update(id, updateUserDto))
   }
